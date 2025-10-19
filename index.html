@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sana Nait Bella — Portfolio CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --primary: #0e0e25;
+  --secondary: #1a1a2e;
+  --accent: #070715;
+  --accent-light: #7a447f;
+  --accent-dark: #0a0914;
+  --text: #ffffff;
+  --text-light: #e6e6e6;
+  --text-lighter: #b8b8b8;
+  --card-border: rgba(217, 217, 222, 0.491);
+}
+
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { 
+  font-family:'Tajawal', sans-serif; 
+  color:var(--text); 
+  height: 100vh; 
+        background-image: url('R.jpg'); 
+        background-size: cover;
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+html { scroll-behavior: smooth; }
+.blur-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('R.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  filter: blur(10px); 
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top:0; left:0;
+  width:80px;
+  height:100%;
+  backdrop-filter: blur(20px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:30px;
+  z-index:1000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-right: 1px solid var(--card-border);
+  transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+  width: 100px;
+}
+
+.sidebar a {
+  width:50px; height:50px;
+  margin:15px 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  color:var(--text-light);
+  font-size:1.3rem;
+  text-decoration:none;
+  transition:0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.sidebar a span {
+  position: absolute;
+  left: 70px;
+  background: var(--accent);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar:hover a span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidebar a.active, .sidebar a:hover {
+  background:var(--accent);
+  color:#fff;
+  transform:translateY(-3px);
+  box-shadow: 0 5px 15px rgba(106, 103, 206, 0.4);
+}
+
+/* Main content */
+main {
+  margin-left:80px;
+}
+section {
+  min-height:100vh;
+  padding:100px 60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow: hidden;
+}
+
+/* Background Pattern */
+.bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(106, 103, 206, 0.1) 0%, transparent 55%),
+    radial-gradient(circle at 75% 75%, rgba(106, 103, 206, 0.1) 0%, transparent 55%);
+  z-index: -1;
+}
+
+/* Typography */
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 3px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: var(--accent);
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 25px 0 15px;
+  color: var(--accent);
+  position: relative;
+  padding-left: 15px;
+}
+
+h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+p, li { 
+  color:var(--text-light); 
+  margin-bottom:15px; 
+  line-height:1.7;
+  font-size: 1.1rem;
+}
+
+ul { list-style:none; padding-left:0; }
+
+/* Content Cards */
+.content-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Skills tags */
+.skills { 
+  display:flex; 
+  flex-wrap:wrap; 
+  gap:12px; 
+  margin-top: 20px;
+}
+.skill {
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color:#fff;
+  padding:8px 16px;
+  border-radius:20px;
+  font-size:0.9rem;
+  transition:0.3s;
+  box-shadow: 0 4px 10px rgba(106, 103, 206, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.skill:hover::before {
+  left: 100%;
+}
+
+.skill:hover { 
+  transform:translateY(-3px); 
+  box-shadow: 0 6px 15px rgba(106, 103, 206, 0.4);
+}
+
+/* Contact button */
+.contact-btn {
+  display:inline-block;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color:#fff;
+  padding:14px 30px;
+  border-radius:12px;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
+  margin-top:20px;
+  box-shadow: 0 5px 15px rgba(106, 103, 206, 0.4);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.contact-btn:hover::before {
+  left: 100%;
+}
+
+.contact-btn:hover { 
+  transform:translateY(-3px); 
+  box-shadow: 0 8px 20px rgba(106, 103, 206, 0.5);
+}
+
+/* Home Section */
+#home {
+  text-align: center;
+  position: relative;
+}
+
+#home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(106, 103, 206, 0.1) 0%, transparent 70%);
+  z-index: -1;
+}
+
+#home p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Timeline for education */
+.timeline {
+  position: relative;
+  margin: 30px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 30px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(106, 103, 206, 0.3);
+}
+
+/* Links */
+a {
+  color: var(--accent-light);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-light);
+  transition: width 0.3s;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+a:hover {
+  color: #fff;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(106, 103, 206, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.project-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  color: var(--accent-light);
+  font-size: 1.2rem;
+  margin: 0;
+}
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 25px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.interest-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 25px 10px;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.interest-card i {
+  font-size: 1.8rem;
+  color: var(--accent-light);
+  margin-bottom: 10px;
+}
+
+.interest-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 10px 25px rgba(106,103,206,0.4);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background: var(--secondary);
+  margin: 10% auto;
+  padding: 40px;
+  border: 1px solid var(--card-border);
+  width: 90%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.modal-content h2 {
+  color: var(--accent-light);
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  color: var(--text-light);
+  margin-bottom: 25px;
+}
+
+.close {
+  color: var(--text-light);
+  float: right;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: var(--accent-light);
+}
+
+
+/* Responsive */
+@media(max-width:768px){
+  .sidebar{ 
+    flex-direction:row; 
+    width:100%; 
+    height:70px; 
+    padding:0; 
+    justify-content:center; 
+    bottom: 0;
+    top: auto;
+    border-right: none;
+    border-top: 1px solid var(--card-border);
+  }
+  
+  .sidebar:hover {
+    width: 100%;
+  }
+  
+  .sidebar a span {
+    display: none;
+  }
+  
+  main{ margin-left:0; margin-bottom:70px; }
+  .sidebar a{ margin:0 8px; }
+  section { padding:80px 25px; }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  .content-card { padding: 25px; }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-light);
+}
+</style>
+</head>
+<body>
+<div class="blur-background"></div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="#home" class="active" title="Home">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+  </a>
+  <a href="#about" title="About">
+    <i class="fas fa-user"></i>
+    <span>About</span>
+  </a>
+  <a href="#projects" title="Projects">
+    <i class="fas fa-code"></i>
+    <span>Projects</span>
+  </a>
+  <a href="#skills" title="Skills">
+    <i class="fas fa-tools"></i>
+    <span>Skills</span>
+  </a>
+  <a href="#interests" title="Interests">
+    <i class="fas fa-heart"></i>
+    <span>Interests</span>
+  </a>
+  <a href="#contact" title="Contact">
+    <i class="fas fa-envelope"></i>
+    <span>Contact</span>
+  </a>
+</div>
+
+<main>
+  <!-- Home Section -->
+  <section id="home">
+    <div class="bg-pattern"></div>
+    <h1 class="fade-in">Hello, I'm Sana Nait Bella</h1>
+    <p class="fade-in delay-1">Software Engineering Student • Web Developer • Cybersecurity & Networking Basics</p>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="bg-pattern"></div>
+    <div class="content-card fade-in">
+      <h2>About Me</h2>
+      <p> I’m <strong>Sana Nait Bella</strong>, a passionate Software Engineering student driven by curiosity and creativity. I love transforming ideas into digital solutions that make life easier and more efficient. My academic journey has given me solid foundations in <strong>software development</strong>, <strong>database design</strong>, and <strong>network security</strong>, along with practical experience in building real-world applications. <br><br> Beyond coding, I enjoy exploring <strong>AI</strong> and <strong>cybersecurity</strong> fields, and I’m deeply motivated to contribute to the digital transformation of education systems and university services. I’m a person who values <strong>organization, teamwork, and continuous learning</strong> — always seeking to grow both technically and personally. </p>
+      <h3>Education</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>2025:</strong> Bachelor's in Software Engineering — Ibn Zohr University, Agadir
+        </div>
+        <div class="timeline-item">
+          <strong>2025:</strong> Online Training — AI Basics: Overview of AI (Huawei, Morocco-Code 212)
+        </div>
+        <div class="timeline-item">
+          <strong>2025:</strong> Online Training — HCIP-AI-EI Developer V2.0 Course (Huawei, Morocco-Code 212)
+        </div>
+        <div class="timeline-item">
+          <strong>2025:</strong> Online Training — Next-Generation Cybersecurity (Huawei, Morocco-Code 212)
+        </div>
+        <div class="timeline-item">
+          <strong>2024:</strong> University Diploma in Mathematics & Computer Science — Ibn Zohr University, Agadir
+        </div>
+        <div class="timeline-item">
+          <strong>2021:</strong> Baccalaureate in Mathematical Sciences A — Ibn Suleiman Al-Roudani High School, Taroudant
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+<section id="projects">
+  <div class="bg-pattern"></div>
+  <div class="content-card fade-in">
+    <h2>My Projects</h2>
+
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card" onclick="openModal('taskModal')">
+        <img src="logo-todo.png" alt="tasks master Logo">
+        <h3>tasks master</h3>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card" onclick="openModal('portfolioModal')">
+        <img src="R.jpg" alt="Portfolio Logo">
+        <h3>Portfolio Website</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Project Modals -->
+<div id="taskModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('taskModal')">&times;</span>
+    <h2>todo tasks</h2>
+    <p>applicatin web to managment the tasks with react node exprisse supabase  </p>
+    <a href="https://mytasks-app-smoky.vercel.app/login" target="_blank" class="contact-btn">View App</a>
+  </div>
+</div>
+
+<div id="portfolioModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('portfolioModal')">&times;</span>
+    <h2>cv Website</h2>
+    <p>Personal website designed to showcase projects, skills, and academic background using HTML, CSS, and JavaScript.</p>
+    <a href="https://your-portfolio-link.com" target="_blank" class="contact-btn">Visit Site</a>
+  </div>
+</div>
+
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="bg-pattern"></div>
+    <div class="content-card fade-in">
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <span class="skill">Java</span>
+        <span class="skill">C</span>
+        <span class="skill">C++</span>
+        <span class="skill">PHP</span>
+        <span class="skill">Python</span>
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">PL/SQL</span>
+        <span class="skill">TCP/IP</span>
+      </div>
+
+      <h3>Soft Skills</h3>
+      <ul>
+        <li>Team spirit — Member of a programming club</li>
+        <li>Sociable and curious</li>
+        <li>Competitive mindset</li>
+      </ul>
+
+      <h3>Languages</h3>
+      <ul>
+        <li>Arabic — Native</li>
+        <li>French — Fluent</li>
+        <li>English — Intermediate</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Interests Section -->
+  <section id="interests">
+    <div class="bg-pattern"></div>
+    <div class="content-card fade-in">
+      <h2>Interests</h2>
+      <div class="interests-grid">
+  <div class="interest-card">
+    <i class="fas fa-plane"></i>
+    <p>Travel</p>
+  </div>
+  <div class="interest-card">
+    <i class="fas fa-dumbbell"></i>
+    <p>Sports</p>
+  </div>
+  <div class="interest-card">
+    <i class="fas fa-book"></i>
+    <p>Reading</p>
+  </div>
+  <div class="interest-card">
+    <i class="fas fa-paint-brush"></i>
+    <p>Drawing</p>
+  </div>
+  <div class="interest-card">
+    <i class="fas fa-pen-nib"></i>
+    <p>Writing</p>
+  </div>
+  <div class="interest-card">
+    <i class="fas fa-music"></i>
+    <p>Music</p>
+  </div>
+</div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="bg-pattern"></div>
+    <div class="content-card fade-in">
+      <h2>Contact Me</h2>
+<p><i class="fas fa-map-marker-alt"></i> Taroudant, Morocco</p>
+<p><i class="fas fa-envelope"></i> <a href="mailto:sana.naitnella@gmail.com">sana.naitnella@gmail.com</a></p>
+<p><i class="fas fa-link"></i> <a href="https://www.linkedin.com/in/sana-nait-bella-22b715336/" target="_blank">LinkedIn</a></p>
+
+<form id="contact-form" class="fade-in" style="margin-top:20px;">
+  <input type="text" name="name" placeholder="Your Name" required style="width:100%; padding:10px; margin-bottom:15px; border-radius:10px; border:none; background:rgba(255,255,255,0.1); color:#fff;">
+  
+  <input type="email" name="email" placeholder="Your Email" required style="width:100%; padding:10px; margin-bottom:15px; border-radius:10px; border:none; background:rgba(255,255,255,0.1); color:#fff;">
+  
+  <textarea name="message" placeholder="Your Message" rows="5" required style="width:100%; padding:10px; margin-bottom:15px; border-radius:10px; border:none; background:rgba(255,255,255,0.1); color:#fff;"></textarea>
+  
+  <button type="submit" class="contact-btn">Send Message</button>
+</form>
+<p id="form-status" style="margin-top:15px;"></p>
+    </div>
+  </section>
+</main>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+
+
+  emailjs.init("TJUgPfsIk6IgZkvOZ");
+
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_pcmh64k', 'template_9k0ez49', this)
+      .then(function() {
+        status.style.color = "lightgreen";
+        status.textContent = "Message sent successfully!";
+        form.reset();
+      }, function(error) {
+        status.style.color = "red";
+        status.textContent = "Failed to send message. Please try again later.";
+        console.log('EmailJS Error:', error);
+      });
+  });
+</script>
+<script>
+// Highlight sidebar active link on scroll
+const sections = document.querySelectorAll('main section');
+const links = document.querySelectorAll('.sidebar a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    const top = window.scrollY + 100; // offset for sidebar
+    if(top >= sec.offsetTop){ current = sec.getAttribute('id'); }
+  });
+  links.forEach(link => {
+    link.classList.remove('active');
+    if(link.getAttribute('href') === '#'+current){ link.classList.add('active'); }
+  });
+});
+
+// Add fade-in animation to elements when they come into view
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.content-card').forEach(card => {
+  observer.observe(card);
+});
+
+// Add floating animation to home section elements
+const homeElements = document.querySelectorAll('#home h1, #home p');
+homeElements.forEach(el => {
+  el.classList.add('float');
+});
+// Modal controls
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+window.onclick = function(event) {
+  const modals = document.querySelectorAll(".modal");
+  modals.forEach(modal => {
+    if (event.target === modal) modal.style.display = "none";
+  });
+};
+
+</script>
+
+</body>
+</html>
